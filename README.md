@@ -35,9 +35,9 @@ com.apple.keylayout.US # print the ID string of your active input method
 $ im-select com.apple.keylayout.US # change your active input method
 ```
 
-## But my default keyboard is not US English
+## What should I do if my default keyboard is not US English?
 
-SmartIM will assume your default keyboard is UE English (com.apple.keylayout.US). If you want to change this,
+SmartIM assumes your default keyboard is UE English (com.apple.keylayout.US). If you want to change this,
 please add the following line to your `.vimrc`:
 
 `let g:smartim_default = '<your_default_keyboard_id>'`
