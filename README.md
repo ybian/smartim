@@ -15,7 +15,8 @@ It is Mac-only for now.
 2. Run `make` under root directory to compile `im-select` (or you can use the compiled binary directly)
 3. Copy `im-select` to a directory in your $PATH
 4. Copy `smartim.vim` to your vim plugin directory (usually `.vim/plugins`)
-5. Relauch vim and enjoy the convenience
+5. Add `let g:smartim_status = "enable"` to your .vimrc
+6. Relauch vim and enjoy the convenience
 
 # FAQ
 
