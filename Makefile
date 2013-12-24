@@ -3,4 +3,4 @@ NAME=im-select
 OPTS=-framework foundation -framework carbon
 
 all:
-	$(CC) $(OPTS) -o $(NAME) $(NAME).m
+	$(CC) $(OPTS) -o plugin/$(NAME) $(NAME).m

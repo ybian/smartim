@@ -9,13 +9,22 @@ switches back when you enter insert mode again. It consists of 2 tiny programs:
 
 It is Mac-only for now.
 
-# How to use it?
+# Installation
 
+## Vundle
+1. Add this line to your ~/.vimrc file:
+```Bundle 'ybian/smartim'```
+2. Open vim and run `:BundleInstall`
+
+## Pathogen
+1. `cd ~/.vim/bundle`
+2. `git clone git@github.com:ybian/smartim.git`
+
+## Others
 1. Clone this repository to your local disk
-2. Run `make` under root directory to compile `im-select` (or you can use the compiled binary directly)
-3. Copy `im-select` to a directory in your $PATH
-4. Copy `smartim.vim` to your vim plugin directory (usually `.vim/plugins`)
-5. Relauch vim and enjoy the convenience
+2. Copy `im-select` and `smartim.vim` (both are under `plugin` directory) to your vim plugin directory (usually `.vim/plugins`)
+
+Then, enjoy the convenience!
 
 # FAQ
 

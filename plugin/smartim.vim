@@ -2,18 +2,20 @@ if !exists("g:smartim_default")
     let g:smartim_default = "com.apple.keylayout.US"
 endif
 
+let s:imselect_path = expand('<sfile>:p:h') . "/im-select "
+
 function! SmartIM_SelectDefault()
-    let b:saved_im = system("im-select")
+    let b:saved_im = system(s:imselect_path)
     if v:shell_error
         unlet b:saved_im
     else
-        let l:a = system("im-select " . g:smartim_default)
+        let l:a = system(s:imselect_path . g:smartim_default)
     endif
 endfunction
 
 function! SmartIM_SelectSaved()
     if exists("b:saved_im")
-        let l:a = system("im-select " . b:saved_im)
+        let l:a = system(s:imselect_path . b:saved_im)
     endif
 endfunction
 
