@@ -35,7 +35,7 @@ equivalents for other platforms but I just don't have the time to do so.
 
 ## Can I use `im-select` as a standalone utility?
 
-Sure. The usge is very simple: invoke it with no argument to get the ID string of current active
+Sure. The usage is very simple: invoke it with no argument to get the ID string of current active
 input method; invoke it with an ID string to set current input method.
 
 ```
@@ -46,7 +46,7 @@ $ im-select com.apple.keylayout.US # change your active input method
 
 ## What should I do if my default keyboard is not US English?
 
-SmartIM assumes your default keyboard is UE English (com.apple.keylayout.US). If you want to change this,
+SmartIM assumes your default keyboard is US English (com.apple.keylayout.US). If you want to change this,
 please add the following line to your `.vimrc`:
 
 `let g:smartim_default = '<your_default_keyboard_id>'`
