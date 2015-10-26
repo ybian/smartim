@@ -13,8 +13,8 @@ It is Mac-only for now.
 
 ## Vundle
 1. Add this line to your ~/.vimrc file:
-```Bundle 'ybian/smartim'```
-2. Open vim and run `:BundleInstall`
+```Plugin 'ybian/smartim'```
+2. Open vim and run `:PluginInstall`
 
 ## Pathogen
 1. `cd ~/.vim/bundle`
