@@ -19,5 +19,6 @@ function! SmartIM_SelectSaved()
     endif
 endfunction
 
+autocmd VimLeavePre * call SmartIM_SelectSaved()
 autocmd InsertLeave * call SmartIM_SelectDefault()
 autocmd InsertEnter * call SmartIM_SelectSaved()
