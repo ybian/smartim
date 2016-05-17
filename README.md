@@ -60,9 +60,9 @@ Put this in init.vim or .vimrc:
 
 ```
 function! Multiple_cursors_before()
-  let g:SmartIMDisable = 1
+  let g:smartim_disable = 1
 endfunction
 function! Multiple_cursors_after()
-  unlet g:SmartIMDisable
+  unlet g:smartim_disable
 endfunction
 ```
