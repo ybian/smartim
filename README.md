@@ -52,3 +52,17 @@ please add the following line to your `.vimrc`:
 `let g:smartim_default = '<your_default_keyboard_id>'`
 
 Replace `<your_default_keyboard_id>` with the ID string of your input method (which can be get via `im-select`)
+
+
+## Why editing multiple cursors is slow with vim-multiple-cursors?
+
+Put this in init.vim or .vimrc:
+
+```
+function! Multiple_cursors_before()
+  let g:SmartIMDisable = 1
+endfunction
+function! Multiple_cursors_after()
+  unlet g:SmartIMDisable
+endfunction
+```
