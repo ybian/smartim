@@ -5,6 +5,9 @@ endif
 let s:imselect_path = expand('<sfile>:p:h') . "/im-select "
 
 function! SmartIM_SelectDefault()
+    if exists('g:smartim_disable')
+        return
+    endif
     let b:saved_im = system(s:imselect_path)
     if v:shell_error
         unlet b:saved_im
@@ -14,6 +17,9 @@ function! SmartIM_SelectDefault()
 endfunction
 
 function! SmartIM_SelectSaved()
+    if exists('g:smartim_disable')
+        return
+    endif
     if exists("b:saved_im")
         let l:a = system(s:imselect_path . b:saved_im)
     endif
