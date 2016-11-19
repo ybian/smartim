@@ -1,3 +1,6 @@
+if exists('did_smartim_loaded') | finish | endif
+let did_smartim_loaded = 1
+
 if !exists("g:smartim_default")
     let g:smartim_default = "com.apple.keylayout.US"
 endif
@@ -25,6 +28,9 @@ function! SmartIM_SelectSaved()
     endif
 endfunction
 
-autocmd VimLeavePre * call SmartIM_SelectSaved()
-autocmd InsertLeave * call SmartIM_SelectDefault()
-autocmd InsertEnter * call SmartIM_SelectSaved()
+augroup smartim
+  autocmd!
+  autocmd VimLeavePre * call SmartIM_SelectSaved()
+  autocmd InsertLeave * call SmartIM_SelectDefault()
+  autocmd InsertEnter * call SmartIM_SelectSaved()
+augroup end
