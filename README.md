@@ -54,9 +54,9 @@ please add the following line to your `.vimrc`:
 Replace `<your_default_keyboard_id>` with the ID string of your input method (which can be get via `im-select`)
 
 
-## Why editing multiple cursors is slow with vim-multiple-cursors?
+## Somehow I want to disable this plugin
 
-Put this in init.vim or .vimrc:
+For example, some people reported that it is slow while editing with vim-multiple-cursors, to fix this, put this in .vimrc:
 
 ```
 function! Multiple_cursors_before()
@@ -66,3 +66,11 @@ function! Multiple_cursors_after()
   unlet g:smartim_disable
 endfunction
 ```
+
+## I have other problems to debug...
+
+Follow the following steps:
+
+1. Run vim with `vim --cmd 'let g:smartim_debug=1'`
+2. Enter and leave insert mode for a couple of times to reproduce your problem; then exit vim.
+3. Open an issue on github and attach the content of `~/vim_smartim_debug_output`
