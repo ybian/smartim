@@ -115,7 +115,7 @@ class InputSourceManager {
 
         let flag = CGEventFlags(rawValue: rawFlags)
         down.flags = flag;
-        up.flags = flag;
+        /* up.flags = flag; */
 
         let loc = CGEventTapLocation.cghidEventTap
 
