@@ -1,6 +1,5 @@
-CC=/usr/bin/clang
+SWIFT=swiftc
 NAME=im-select
-OPTS=-framework foundation -framework carbon
 
 all:
-	$(CC) $(OPTS) -o plugin/$(NAME) $(NAME).m
+	$(SWIFT) -o plugin/$(NAME) $(NAME).swift
