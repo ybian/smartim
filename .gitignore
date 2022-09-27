@@ -1,1 +1,3 @@
 *.swp
+plugin/*_x86
+plugin/*_arm
