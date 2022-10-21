@@ -69,6 +69,9 @@ function! Smartim_SelectDefault()
 
   if has('job')
     call job_start([s:imselect_path], {'callback': 'Smartim_GetInputMethodHandler'})
+  elseif has('nvim')
+    echo "get nvim"
+    call jobstart([s:imselect_path], {'callback': 'Smartim_GetInputMethodHandler'})
   else
     silent let b:saved_im = system(s:imselect_path)
     silent call system(s:imselect_path . ' ' . g:smartim_default)
@@ -88,10 +91,12 @@ function! Smartim_SelectSaved()
   if exists("b:saved_im") && b:saved_im != g:smartim_default
     if has('job')
       call job_start([s:imselect_path, b:saved_im])
+    elseif has('nvim')
+      echo "xxxx"
+      call jobstart([s:imselect_path, b:saved_im])
     else
       silent call system(s:imselect_path . ' '. b:saved_im)
     endif
-     
     call Smartim_debug_print('b:saved_im=' . b:saved_im.'')
     call Smartim_debug_print('<<< Smartim_SelectSaved returned ' . v:shell_error)
   else
