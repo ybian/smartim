@@ -28,6 +28,7 @@ int main(int argc, const char * argv[]) {
         TISInputSourceRef current = TISCopyCurrentKeyboardInputSource();
         NSString *sourceId = (NSString *)(TISGetInputSourceProperty(current, kTISPropertyInputSourceID));
         fprintf(stdout, "%s\n", [sourceId UTF8String]);
+        fflush(stdout);
         CFRelease(current);
     }
 
