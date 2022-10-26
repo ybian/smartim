@@ -53,11 +53,22 @@ endfunction
 
 call Smartim_start_debug()
 
-function! Smartim_GetInputMethodHandler(channel, msg)
-  silent let b:saved_im = a:msg
-  silent call system(s:imselect_path . ' ' .g:smartim_default)
-  call Smartim_debug_print('b:saved_im = ' . b:saved_im)
-  call Smartim_debug_print('<<< Smartim_SelectDefault returned ' . v:shell_error)
+function! s:Smartim_GetInputMethodHandler_Vim(channel, msg)
+  call s:Smartim_RestoreDefaultIm(a:msg)
+endfunction
+
+function! s:Smartim_GetInputMethodHandler_Nvim(job_id, data, event) dict
+  let output = a:data[0][:-1]
+  if len(output)
+    call s:Smartim_RestoreDefaultIm(output)
+  endif
+endfunction
+
+function! s:Smartim_RestoreDefaultIm(current)
+    silent let b:saved_im = a:current
+    silent call system(s:imselect_path . ' ' .g:smartim_default)
+    call Smartim_debug_print('b:saved_im = ' . b:saved_im)
+    call Smartim_debug_print('<<< Smartim_SelectDefault returned ' . v:shell_error)
 endfunction
 
 function! Smartim_SelectDefault()
@@ -68,31 +79,25 @@ function! Smartim_SelectDefault()
   endif
 
   if has('job')
-    call job_start([s:imselect_path], {'callback': 'Smartim_GetInputMethodHandler'})
+    call job_start([s:imselect_path], {'callback': 's:Smartim_GetInputMethodHandler_Vim'})
   elseif has('nvim')
-    echo "get nvim"
-    call jobstart([s:imselect_path], {'callback': 'Smartim_GetInputMethodHandler'})
+    call jobstart([s:imselect_path], {'on_stdout' : function('s:Smartim_GetInputMethodHandler_Nvim')})
   else
-    silent let b:saved_im = system(s:imselect_path)
-    silent call system(s:imselect_path . ' ' . g:smartim_default)
-    call Smartim_debug_print('b:saved_im = ' . b:saved_im)
-    call Smartim_debug_print('<<< Smartim_SelectDefault returned ' . v:shell_error)
+    silent let output = system(s:imselect_path)
+    silent call s:Smartim_RestoreDefaultIm(output)
   endif
 
 endfunction
 
 function! Smartim_SelectSaved()
   call Smartim_debug_print('>>> Smartim_SelectSaved')
-
   if g:smartim_disable == 1 
     return
   endif
-
   if exists("b:saved_im") && b:saved_im != g:smartim_default
     if has('job')
       call job_start([s:imselect_path, b:saved_im])
     elseif has('nvim')
-      echo "xxxx"
       call jobstart([s:imselect_path, b:saved_im])
     else
       silent call system(s:imselect_path . ' '. b:saved_im)
