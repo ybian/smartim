@@ -1,8 +1,8 @@
 " =============================================================================
 " A plugin to make vim stand well with input methods (Mac only)
 " Author:       Ying Bian <bianying@gmail.com>
-" Last Change:  2017-03-30
-" Version:      1.0.0
+" Last Change:  2022-09-27
+" Version:      1.0.1
 " Repository:   https://github.com/ybian/smartim
 " License:      MIT
 " =============================================================================
