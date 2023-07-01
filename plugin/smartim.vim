@@ -27,6 +27,10 @@ endif
 let s:imselect_path = expand('<sfile>:p:h') . "/im-select"
 let s:smartim_debug_output = $HOME . "/vim_smartim_debug_output"
 
+if exists('g:smartim_imselect_path')
+  let s:imselect_path = g:smartim_imselect_path
+endif
+
 function! Smartim_debug_print(msg)
   if g:smartim_debug == 0
     return

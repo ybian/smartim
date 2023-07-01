@@ -7,8 +7,6 @@ switches back when you enter insert mode again. It consists of 2 tiny programs:
 * `im-select`: a command-line utility to get/set active input method
 * `smartim.vim`: a vim plugin to do automatic input method switch, using `im-select`
 
-It is Mac-only for now.
-
 # Installation
 
 ## Vundle
@@ -23,15 +21,26 @@ It is Mac-only for now.
 ## Others
 1. Clone this repository to your local disk
 2. Copy `im-select` and `smartim.vim` (both are under `plugin` directory) to your vim plugin directory (usually `.vim/plugins`)
+3. The `im-select` executable file under `plugin` directory is only for Mac, you can download it for other platforms(like Windows) from https://github.com/daipeihust/im-select.
 
 Then, enjoy the convenience!
 
+# Configurations
+
+## Mac
+
+In most cases this plugin works out of the box on mac.
+
+## Windows
+
+Download the `im-select` executable file from https://github.com/daipeihust/im-select, put it where you like and set its path to `g:smartim_imselect_path`, for example:
+
+```
+let g:smartim_default = '1033'
+let g:smartim_imselect_path = 'C:\\bin\\im-select.exe'
+```
+
 # FAQ
-
-## Why is it Mac-only?
-
-Because the command-line utility `im-select` uses Mac specific APIs. It should be easy to develop
-equivalents for other platforms but I just don't have the time to do so.
 
 ## Can I use `im-select` as a standalone utility?
 
